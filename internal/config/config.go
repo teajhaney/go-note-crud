@@ -23,7 +23,7 @@ func LoadConfig() (*Config, error) {
 	}
 
 
-	mongoURI, err := extractConfigValue("MONGO_URI")
+	mongoURI, err := extractConfigValue("MONGODB_URI")
 	if err != nil {
 		return &Config{}, err
 	}
@@ -33,7 +33,7 @@ func LoadConfig() (*Config, error) {
 		return &Config{}, err
 	}
 
-	port, err := extractConfigValue("SERVER_PORT")
+	port, err := extractConfigValue("PORT")
 	if err != nil {
 		return &Config{}, err
 	}

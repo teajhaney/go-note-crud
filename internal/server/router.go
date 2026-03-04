@@ -2,12 +2,14 @@ package server
 
 import (
 	"net/http"
+	"notes-api/internal/notes"
 
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/mongo"
 )
 
 
-func NewRouter () *gin.Engine{
+func NewRouter (database *mongo.Database) *gin.Engine{
 	router := gin.Default()
 
 
@@ -18,5 +20,7 @@ func NewRouter () *gin.Engine{
 		})
 	})
 
+	// Register notes routes
+	notes.RegisterRoutes(router, database)
 	return router
 }
