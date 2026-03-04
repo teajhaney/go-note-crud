@@ -17,6 +17,11 @@ func RegisterRoutes(router *gin.Engine, db *mongo.Database	) {
 	notesGroup := router.Group("/notes")
 	{
 		notesGroup.POST("/", handler.CreateNote)
-		// Additional routes for GET, PUT, DELETE can be added here
+		notesGroup.GET("/", handler.ListNotes)
+		notesGroup.GET("/:id", handler.GetNoteByID)
+		notesGroup.PATCH("/:id", handler.UpdateNoteByID)
+		notesGroup.DELETE("/:id", handler.DeleteNoteByID)
+
 	}
+
 }
